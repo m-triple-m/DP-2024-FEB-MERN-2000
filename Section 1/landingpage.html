@@ -67,18 +67,54 @@
             padding: 100px 0;
         }
 
-        .text-input, .text-input-area{
+        .text-input,
+        .text-input-area {
             width: 100%;
             margin-bottom: 30px;
             padding: 10px;
             box-sizing: border-box;
+        }
+
+        .form-btn {
+            background-color: blueviolet;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .footer-container{
+            /* border: 2px solid red; */
+            margin: 0 200px;
+            padding: 50px 0;
+
+            display: grid;
+
+            grid-template-columns: 3fr 1fr 1fr;
+            font-family: Roboto;
+            color: white;
+
+        }
+
+        footer{
+            background-color: #555;
+        }
+
+        .social-link{
+            color: white;
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
+
+        .social-link:hover{
+            color: #ca92ff;
         }
     </style>
 
 </head>
 
 <body>
-
     <header>
         <div>
             <h1 class="page-title" style="text-align: center; color: white;">My Site Title</h1>
@@ -123,10 +159,10 @@
 
                 <label for="name">Full Name</label>
                 <input type="text" class="text-input" id="name">
-                
+
                 <label for="email">Email Address</label>
                 <input type="email" class="text-input" id="email">
-                
+
                 <label for="message">Message</label>
                 <textarea type="text" class="text-input-area" id="message"></textarea>
 
@@ -138,7 +174,28 @@
     </section>
 
     <footer>
-
+        <div class="footer-container">
+            <div>
+                <h3>Webite Name</h3>
+                <p>&copy; Copyright 2024</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero nisi sapiente velit explicabo culpa
+                    unde adipisci sequi iure dolores corporis.</p>
+            </div>
+            <div>
+                <h4>Important Links</h4>
+                <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i> Facebook</a>
+                <a href="#" class="social-link"> <i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i> Linkedin</a>
+                <a href="#" class="social-link"><i class="fa-brands fa-github"></i> Github</a>
+            </div>
+            <div>
+                <h4>Important Links</h4>
+                <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i> Facebook</a>
+                <a href="#" class="social-link"> <i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i> Linkedin</a>
+                <a href="#" class="social-link"><i class="fa-brands fa-github"></i> Github</a>
+            </div>
+        </div>
     </footer>
 
 </body>
