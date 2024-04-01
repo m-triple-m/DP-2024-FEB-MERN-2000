@@ -110,6 +110,27 @@
         .social-link:hover{
             color: #ca92ff;
         }
+
+        .input-box{
+            position: relative;
+            width: 50%;
+            margin: auto;
+            /* background-color: rgba(255, 255, 0, 0.438); */
+        }
+
+        .search-icon{
+            position: absolute;
+            right: -5px;
+            top: 9px;
+            color: black;
+        }
+
+        .search-input{
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 50px;
+        }
     </style>
 
 </head>
@@ -119,6 +140,10 @@
         <div>
             <h1 class="page-title" style="text-align: center; color: white;">My Site Title</h1>
             <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, ratione.</h4>
+            <div class="input-box">
+                <input class="search-input" type="text">
+                <i class="search-icon fa-solid fa-magnifying-glass"></i>
+            </div>
         </div>
     </header>
 
