@@ -1,21 +1,30 @@
 'use client';
 import { useFormik } from 'formik';
 import Link from 'next/link';
-import React from 'react'
+import React from 'react';
+import * as Yup from 'yup';
+
+const SignupSchema = Yup.object().shape({
+  name: Yup.string().min(4, 'Name pura likho').required('Naam nhi hai kya?'),
+  email: Yup.string().email('Invalid email').required('Required'),
+  password: Yup.string().required('Password is required')
+    .min(6, 'Too small')
+});
 
 const Signup = () => {
-  
+
   const signupForm = useFormik({
-    initialValues : {
-      name : '',
-      email : '',
-      password : '',
-      confirmPassword : ''
+    initialValues: {
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
     },
-    onSubmit : (values) => {
+    onSubmit: (values) => {
       console.log(values);
       // send values to backend
-    }
+    },
+    validationSchema: SignupSchema
   })
 
   return (
@@ -47,7 +56,7 @@ const Signup = () => {
                     <h3 className="mb-5 text-primary fw-bold">
                       Registration Form
                     </h3>
-                    <form onSubmit={ signupForm.handleSubmit } >
+                    <form onSubmit={signupForm.handleSubmit} >
 
                       <div class="mb-3">
                         <label for="" class="form-label">Email Address</label>
@@ -59,7 +68,9 @@ const Signup = () => {
                           class="form-control"
                           placeholder=""
                         />
-                        <small class="text-muted">Enter Valid Email Address</small>
+                        {signupForm.touched.email && (
+                          <small class="text-danger">{signupForm.errors.email}</small>
+                        )}
                       </div>
                       <div class="mb-3">
                         <label for="" class="form-label">Name</label>
@@ -71,7 +82,9 @@ const Signup = () => {
                           class="form-control"
                           placeholder=""
                         />
-                        <small class="text-muted">Enter Full Name</small>
+                        {signupForm.touched.name && (
+                          <small class="text-danger">{signupForm.errors.name}</small>
+                        )}
                       </div>
                       <div class="mb-3">
                         <label for="" class="form-label">Password</label>
@@ -83,7 +96,9 @@ const Signup = () => {
                           class="form-control"
                           placeholder=""
                         />
-                        <small class="text-muted">Enter Strong Password</small>
+                        {signupForm.touched.password && (
+                          <small class="text-danger">{signupForm.errors.password}</small>
+                        )}
                       </div>
                       <div class="mb-3">
                         <label for="" class="form-label">Confirm Password</label>
@@ -95,7 +110,9 @@ const Signup = () => {
                           class="form-control"
                           placeholder=""
                         />
-                        <small class="text-muted">Passwords Must Match</small>
+                        {signupForm.touched.confirmPassword && (
+                          <small class="text-danger">{signupForm.errors.confirmPassword}</small>
+                        )}
                       </div>
                       <div className="form-check mb-4">
                         <input
