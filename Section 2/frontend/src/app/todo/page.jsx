@@ -6,14 +6,12 @@ const Todo = () => {
     const [todoList, setTodoList] = useState([]);
 
     const addTask = (e) => {
-
         if (e.code === 'Enter') {
             console.log(e.target.value);
 
             setTodoList([...todoList, { task: e.target.value, completed: false }]);
             e.target.value = '';
         }
-
     }
 
     const deleteTask = (index) => {
