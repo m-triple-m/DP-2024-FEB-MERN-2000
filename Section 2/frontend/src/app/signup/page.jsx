@@ -1,7 +1,23 @@
+'use client';
+import { useFormik } from 'formik';
 import Link from 'next/link';
 import React from 'react'
 
 const Signup = () => {
+  
+  const signupForm = useFormik({
+    initialValues : {
+      name : '',
+      email : '',
+      password : '',
+      confirmPassword : ''
+    },
+    onSubmit : (values) => {
+      console.log(values);
+      // send values to backend
+    }
+  })
+
   return (
     <section className="vh-100 bg-primary-subtle">
       <div className="container py-5 h-100">
@@ -31,13 +47,15 @@ const Signup = () => {
                     <h3 className="mb-5 text-primary fw-bold">
                       Registration Form
                     </h3>
-                    <form>
+                    <form onSubmit={ signupForm.handleSubmit } >
 
                       <div class="mb-3">
                         <label for="" class="form-label">Email Address</label>
                         <input
                           type="text"
                           id="email"
+                          onChange={signupForm.handleChange}
+                          value={signupForm.values.email}
                           class="form-control"
                           placeholder=""
                         />
@@ -48,6 +66,8 @@ const Signup = () => {
                         <input
                           type="text"
                           id="name"
+                          onChange={signupForm.handleChange}
+                          value={signupForm.values.name}
                           class="form-control"
                           placeholder=""
                         />
@@ -58,6 +78,8 @@ const Signup = () => {
                         <input
                           type="password"
                           id="password"
+                          onChange={signupForm.handleChange}
+                          value={signupForm.values.password}
                           class="form-control"
                           placeholder=""
                         />
@@ -67,7 +89,9 @@ const Signup = () => {
                         <label for="" class="form-label">Confirm Password</label>
                         <input
                           type="password"
-                          id="cpassword"
+                          id="confirmPassword"
+                          onChange={signupForm.handleChange}
+                          value={signupForm.values.confirmPassword}
                           class="form-control"
                           placeholder=""
                         />
