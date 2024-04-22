@@ -1,10 +1,14 @@
 // import express
 const express = require('express');
+const userRouter = require('./routers/userRouter');
 
 
 // initialize express
 const app = express();
 const port = 5000;
+
+// middleware
+app.use( '/user', userRouter );
 
 // endpoint
 app.get('/' , (req, res) => {
