@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const url = "mongodb+srv://mmm:mmm@cluster0.gvyon.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+const url = "mongodb+srv://mmm:mmm@cluster0.gvyon.mongodb.net/mydatabase4869?retryWrites=true&w=majority&appName=Cluster0"
 
 // asynchronous function
 mongoose.connect(url)
@@ -11,4 +11,4 @@ mongoose.connect(url)
     console.log(err);
 });
 
-console.log('something else');
+module.exports = mongoose;
