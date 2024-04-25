@@ -27,7 +27,20 @@ const Signup = () => {
     },
     onSubmit: (values) => {
       console.log(values);
-      // send values to backend
+
+      // 1. send request to backend
+      // 2. recieve request at backend
+      // 3. process the request
+      // 4. send response back to frontend
+
+      fetch('http://localhost:5000/user/add', {
+        method: 'POST',
+        body: JSON.stringify(values),
+        headers: {
+          'Content-Type':'application/json'
+        }
+      })
+
     },
     validationSchema: SignupSchema
   })
