@@ -40,7 +40,6 @@ const Signup = () => {
           'Content-Type':'application/json'
         }
       })
-
     },
     validationSchema: SignupSchema
   })
