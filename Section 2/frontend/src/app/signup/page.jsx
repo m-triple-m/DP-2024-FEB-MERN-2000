@@ -2,6 +2,7 @@
 import { useFormik } from 'formik';
 import Link from 'next/link';
 import React from 'react';
+import toast from 'react-hot-toast';
 import * as Yup from 'yup';
 
 const SignupSchema = Yup.object().shape({
@@ -37,14 +38,20 @@ const Signup = () => {
         method: 'POST',
         body: JSON.stringify(values),
         headers: {
-          'Content-Type':'application/json'
+          'Content-Type': 'application/json'
         }
       })
-      .then((response) => {
-        console.log(response.status);
-      }).catch((err) => {
-        console.log(err);
-      });
+        .then((response) => {
+          console.log(response.status);
+          if (response.status === 200) {
+            toast.success('User Registered Successfully');
+          } else {
+            toast.error('User Registration Failed');
+          }
+        }).catch((err) => {
+          console.log(err);
+          toast.error('User Registration Failed');
+        });
 
 
     },
