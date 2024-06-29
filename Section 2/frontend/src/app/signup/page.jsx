@@ -36,21 +36,21 @@ const Signup = () => {
 
       fetch('http://localhost:5000/user/add', {
         method: 'POST',
-        body: JSON.stringify(values),
         headers: {
           'Content-Type': 'application/json'
-        }
+        },
+        body: JSON.stringify(values)
       })
         .then((response) => {
           console.log(response.status);
+
           if (response.status === 200) {
-            toast.success('User Registered Successfully');
-          } else {
-            toast.error('User Registration Failed');
+            toast.success('User registered successfully');
           }
+
         }).catch((err) => {
           console.log(err);
-          toast.error('User Registration Failed');
+          toast.error('Something went wrong');
         });
 
 
