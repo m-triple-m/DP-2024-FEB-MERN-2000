@@ -1,5 +1,7 @@
 'use client';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast';
 
 const ManageUsers = () => {
 
@@ -18,6 +20,16 @@ const ManageUsers = () => {
         fetchUsers();
     }, [])
 
+    const deleteUser = async (id) => {
+        const res = await fetch(`http://localhost:5000/user/delete/${id}`, {
+            method: 'DELETE'
+        });
+        console.log(res.status);
+        if (res.status === 200) {
+            toast.success('User deleted successfully');
+            fetchUsers();
+        }
+    }
 
     return (
         <div className='pt-5'>
@@ -34,6 +46,7 @@ const ManageUsers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Created At</th>
+                            <th colSpan={2}>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,7 +56,16 @@ const ManageUsers = () => {
                                     <td>{user._id}</td>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
-                                    <td>{user.createdAt}</td>
+                                    <td>{new Date(user.createdAt).toDateString()}</td>
+                                    <td>
+                                        <Link href={'/update-user/'+user._id} className='btn btn-primary'>Edit</Link>
+                                    </td>
+                                    <td>
+                                        <button
+                                            onClick={() => { deleteUser(user._id) }}
+                                            className='btn btn-danger'
+                                        >Delete</button>
+                                    </td>
                                 </tr>
                             })
                         }
