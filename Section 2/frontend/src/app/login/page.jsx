@@ -3,16 +3,44 @@ import React from 'react';
 import classes from './login.module.css';
 import icon from './myimage.jpeg';
 import { useFormik } from 'formik';
+import toast from 'react-hot-toast';
 
 const Login = () => {
 
     const loginForm = useFormik({
+
         initialValues: {
             email: '',
             password: ''
         },
+
         onSubmit: (values) => {
             console.log(values);
+
+            fetch('http://localhost:5000/user/authenticate/', {
+                method: 'POST',
+                body: JSON.stringify(values),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then((response) => {
+                    if (response.status === 200) {
+                        toast.success('Login Successful');
+                    } else {
+                        toast.error('Login Failed');
+                    }
+                    return response.json();
+                })
+                .then((result) => {
+                    console.log(result);
+                    localStorage.setItem('token', result);
+                    document.cookie = `token=${result}`;
+                })
+                .catch((err) => {
+                    console.log(err);
+                    toast.error('Login Failed');
+                });
         }
     })
 
